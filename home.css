@@ -1,3 +1,5 @@
+
+
 *{
     margin:0;
     padding:0;
@@ -7,27 +9,50 @@
 
 body{
     background:#f5f5f5;
+
+    /* Primary 2D Layout - CSS Grid */
+    display:grid;
+    grid-template-columns:1fr;
+    grid-template-rows:auto auto auto auto auto auto auto;
+    grid-template-areas:
+        "nav"
+        "hero"
+        "welcome"
+        "features"
+        "services"
+        "cta"
+        "footer";
 }
 
-/* Navigation Bar */
+
 
 nav{
+    grid-area:nav;
+
     background:#111;
-    padding:15px 0;
+    padding:15px 30px;
+
     position:sticky;
     top:0;
     z-index:1000;
+
+    border-bottom:2px solid #00cc66;
+
+   
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 nav ul{
     list-style:none;
+
     display:flex;
-    justify-content:center;
+    gap:40px;
 }
 
 nav ul li{
     position:relative;
-    margin:0 20px;
 }
 
 nav ul li a{
@@ -35,49 +60,55 @@ nav ul li a{
     text-decoration:none;
     font-size:18px;
     font-weight:bold;
-    transition:0.3s;
+    transition:.3s;
 }
 
 nav ul li a:hover{
     color:#00cc66;
 }
 
-/* Dropdown */
 
 .dropdown-content{
     display:none;
     position:absolute;
     top:35px;
     left:0;
+
     background:white;
     min-width:250px;
     padding:15px;
+
+    border:2px solid #00cc66;
     border-radius:8px;
-    box-shadow:0 0 15px rgba(0,0,0,0.2);
+
+    box-shadow:0 0 10px rgba(0,0,0,.2);
 }
 
 .dropdown-content h4{
-    margin-top:10px;
-    margin-bottom:8px;
-    color:#00aa55;
+    margin:10px 0;
+    color:#00994d;
 }
 
 .dropdown-content label{
     display:block;
-    margin:5px 0;
+    margin:6px 0;
 }
 
 .dropdown:hover .dropdown-content{
     display:block;
 }
 
-/* Hero Section */
+
 
 .hero{
+    grid-area:hero;
+
     height:85vh;
-    background:linear-gradient(rgba(0,0,0,0.6),
-    rgba(0,0,0,0.6)),
-    url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80');
+
+    background:
+    linear-gradient(rgba(0,0,0,.6),
+    rgba(0,0,0,.6)),
+    url("https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80");
 
     background-size:cover;
     background-position:center;
@@ -85,12 +116,15 @@ nav ul li a:hover{
     display:flex;
     justify-content:center;
     align-items:center;
+
     text-align:center;
     color:white;
+
+    border:2px solid #ddd;
 }
 
 .hero-content h1{
-    font-size:70px;
+    font-size:65px;
     margin-bottom:20px;
 }
 
@@ -100,53 +134,70 @@ nav ul li a:hover{
 }
 
 .btn{
+    display:inline-block;
+    padding:15px 30px;
+
     background:#00cc66;
     color:white;
+
     text-decoration:none;
-    padding:15px 30px;
     border-radius:5px;
-    font-size:18px;
 }
 
 .btn:hover{
     background:#00994d;
 }
 
-/* Welcome */
+
 
 .welcome{
+    grid-area:welcome;
+
     background:white;
     padding:60px 10%;
+
     text-align:center;
+
+    border:2px solid #ddd;
 }
 
 .welcome h2{
     margin-bottom:20px;
-    color:#222;
 }
 
 .welcome p{
-    font-size:18px;
     line-height:1.8;
+    font-size:18px;
 }
 
-/* Features */
+
 
 .features{
+    grid-area:features;
+
     padding:60px 5%;
+    background:#f8f8f8;
+
+    border:2px solid #ddd;
+
+    
     display:flex;
     justify-content:center;
+    align-items:stretch;
     flex-wrap:wrap;
     gap:25px;
 }
 
 .feature{
-    background:white;
     width:300px;
     padding:25px;
+
+    background:white;
+
+    border:2px solid #00cc66;
     border-radius:10px;
+
     text-align:center;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
 .feature h3{
@@ -154,11 +205,15 @@ nav ul li a:hover{
     margin-bottom:10px;
 }
 
-/* Services */
+
 
 .services{
-    background:white;
+    grid-area:services;
+
     padding:60px 5%;
+    background:white;
+
+    border:2px solid #ddd;
 }
 
 .services h2{
@@ -167,18 +222,26 @@ nav ul li a:hover{
 }
 
 .cards{
+
+   
+
     display:flex;
     justify-content:center;
+    align-items:flex-start;
+
     flex-wrap:wrap;
-    gap:25px;
+    gap:30px;
 }
 
 .card{
     width:320px;
+
     background:#f8f8f8;
+
+    border:2px solid #00cc66;
     border-radius:10px;
+
     overflow:hidden;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
 .card img{
@@ -195,29 +258,44 @@ nav ul li a:hover{
     margin-bottom:10px;
 }
 
-/* CTA */
 
+.about{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    text-align: center;    
+    padding: 40px 20px;
+}
 .cta{
+    grid-area:cta;
+
     background:#00cc66;
     color:white;
+
     text-align:center;
+
     padding:70px 20px;
+
+    border:2px solid #ddd;
 }
 
 .cta h2{
     margin-bottom:20px;
 }
 
-/* Footer */
-
 footer{
+    grid-area:footer;
+
     background:#111;
     color:white;
+
     text-align:center;
+
     padding:30px;
+
+    border-top:2px solid #00cc66;
 }
 
 footer p{
-    margin:8px;
+    margin:8px 0;
 }
-
