@@ -283,9 +283,15 @@
         }
         
         // 2. Gym Workout සහ Muscle Gain තේරුවොත්
-        else if (workoutType === 'gym' && goal === 'muscle_gain') {
-            window.location.href = 'gym-muscle-gain.html';
-        } 
+        else if (workoutType === 'gym' && goal === 'gain' && level === 'beginner' && Gender === 'male' && Area === 'full') {
+            window.location.href = '/GGBMF.html'; // ඒ අදාළ page එකේ නම
+        }
+        else if (workoutType === 'gym' && goal === 'gain' && level === 'intermediate' && Gender === 'male' && Area === 'full') {
+            window.location.href = '/GGIMF.html'; // ඒ අදාළ page එකේ නම
+        }
+        else if (workoutType === 'gym' && goal === 'gain' && level === 'advanced' && Gender === 'male' && Area === 'full') {
+            window.location.href = '/GGAMF.html'; // ඒ අදාළ page එකේ නම
+        }
         // 3. Home Workout විතරක් තේරුවොත්
         else if (workoutType === 'home') {
             window.location.href = 'home-workouts.html';
