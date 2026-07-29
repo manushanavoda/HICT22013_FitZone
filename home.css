@@ -1,301 +1,151 @@
 
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body{
-    background:#f5f5f5;
-
-    /* Primary 2D Layout - CSS Grid */
-    display:grid;
-    grid-template-columns:1fr;
-    grid-template-rows:auto auto auto auto auto auto auto;
-    grid-template-areas:
-        "nav"
-        "hero"
-        "welcome"
-        "features"
-        "services"
-        "cta"
-        "footer";
+body {
+  color: #333;
+  line-height: 1.6;
+  background-color: #f9f9f9;
 }
 
 
-
-nav{
-    grid-area:nav;
-
-    background:#111;
-    padding:15px 30px;
-
-    position:sticky;
-    top:0;
-    z-index:1000;
-
-    border-bottom:2px solid #00cc66;
-
-   
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.hero-section {
+  position: relative;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+              url('/pictures/head.jpeg') center/cover no-repeat;
+  height: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  padding: 0 1rem;
 }
 
-nav ul{
-    list-style:none;
-
-    display:flex;
-    gap:40px;
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
-nav ul li{
-    position:relative;
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  max-width: 650px;
+  font-weight: 400;
 }
 
-nav ul li a{
-    color:white;
-    text-decoration:none;
-    font-size:18px;
-    font-weight:bold;
-    transition:.3s;
+.btn-primary {
+  display: inline-block;
+  background-color: #198754;
+  color: #ffffff;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-nav ul li a:hover{
-    color:#00cc66;
+.btn-primary:hover {
+  background-color: #27ae60; /* පාට පොඩ්ඩක් dark වෙනවා */
+  transform: translateY(-5px) scale(1.03); /* Button එක පික්සල් 5ක් උඩට ඇවිත් පොඩ්ඩක් ලොකු වෙනවා */
+  box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4); /* Green glow shadow එකක් යටින් එනවා */
 }
 
-
-.dropdown-content{
-    display:none;
-    position:absolute;
-    top:35px;
-    left:0;
-
-    background:white;
-    min-width:250px;
-    padding:15px;
-
-    border:2px solid #00cc66;
-    border-radius:8px;
-
-    box-shadow:0 0 10px rgba(0,0,0,.2);
+.btn-primary:active {
+  transform: translateY(-2px) scale(1.01); /* Click කරද්දී පොඩ්ඩක් යටට තද වෙන ලස්සන effect එකක් */
+  box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3);
 }
 
-.dropdown-content h4{
-    margin:10px 0;
-    color:#00994d;
+/* ---------------- About Us Section ---------------- */
+.about-section {
+  background: linear-gradient(rgba(240, 240, 240, 0.85), rgba(240, 240, 240, 0.85)),
+              url('pictures/aboutus.webp') center/cover no-repeat;
+  padding: 4rem 2rem;
+  text-align: center;
 }
 
-.dropdown-content label{
-    display:block;
-    margin:6px 0;
+.about-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: #111;
+  font-weight: 600;
 }
 
-.dropdown:hover .dropdown-content{
-    display:block;
+.about-section p {
+  max-width: 850px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  color: #333;
+  line-height: 1.7;
 }
 
-
-
-.hero{
-    grid-area:hero;
-
-    height:85vh;
-
-    background:
-    linear-gradient(rgba(0,0,0,.6),
-    rgba(0,0,0,.6)),
-    url("https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80");
-
-    background-size:cover;
-    background-position:center;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    text-align:center;
-    color:white;
-
-    border:2px solid #ddd;
+/* ---------------- Our Programs Section ---------------- */
+.programs-section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.hero-content h1{
-    font-size:65px;
-    margin-bottom:20px;
+.programs-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+  color: #111;
+  font-weight: 600;
 }
 
-.hero-content p{
-    font-size:24px;
-    margin-bottom:30px;
+.cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
-.btn{
-    display:inline-block;
-    padding:15px 30px;
+.program-card {
+  background: #ffffff;
+  border: 1.5px solid #2ecc71;
+  border-radius: 8px;
+  width: 320px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
 
-    background:#00cc66;
-    color:white;
-
-    text-decoration:none;
-    border-radius:5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer; /* mouse hover කරද්දී pointer hand එක පෙන්වන්න */
 }
 
-.btn:hover{
-    background:#00994d;
+.program-card:hover {
+  transform: translateY(-10px) scale(1.02); /* Card එක පික්සල් 10ක් උඩට උස්සා පොඩ්ඩක් විශාල කරයි */
+  box-shadow: 0 12px 24px rgba(46, 204, 113, 0.25); /* යටින් greenish/dark glow shadow එකක් එයි */
 }
 
-
-
-.welcome{
-    grid-area:welcome;
-
-    background:white;
-    padding:60px 10%;
-
-    text-align:center;
-
-    border:2px solid #ddd;
+.card-img img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
 }
 
-.welcome h2{
-    margin-bottom:20px;
+.card-body {
+  padding: 1.2rem;
 }
 
-.welcome p{
-    line-height:1.8;
-    font-size:18px;
+.card-body h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #111;
 }
 
-
-
-.features{
-    grid-area:features;
-
-    padding:60px 5%;
-    background:#f8f8f8;
-
-    border:2px solid #ddd;
-
-    
-    display:flex;
-    justify-content:center;
-    align-items:stretch;
-    flex-wrap:wrap;
-    gap:25px;
-}
-
-.feature{
-    width:300px;
-    padding:25px;
-
-    background:white;
-
-    border:2px solid #00cc66;
-    border-radius:10px;
-
-    text-align:center;
-}
-
-.feature h3{
-    color:#00aa55;
-    margin-bottom:10px;
-}
-
-
-
-.services{
-    grid-area:services;
-
-    padding:60px 5%;
-    background:white;
-
-    border:2px solid #ddd;
-}
-
-.services h2{
-    text-align:center;
-    margin-bottom:40px;
-}
-
-.cards{
-
-   
-
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-
-    flex-wrap:wrap;
-    gap:30px;
-}
-
-.card{
-    width:320px;
-
-    background:#f8f8f8;
-
-    border:2px solid #00cc66;
-    border-radius:10px;
-
-    overflow:hidden;
-}
-
-.card img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
-}
-
-.card-content{
-    padding:20px;
-}
-
-.card-content h3{
-    margin-bottom:10px;
-}
-
-
-.about{
-    display: flex;
-    flex-direction: column; 
-    align-items: center;    
-    text-align: center;    
-    padding: 40px 20px;
-}
-.cta{
-    grid-area:cta;
-
-    background:#00cc66;
-    color:white;
-
-    text-align:center;
-
-    padding:70px 20px;
-
-    border:2px solid #ddd;
-}
-
-.cta h2{
-    margin-bottom:20px;
-}
-
-footer{
-    grid-area:footer;
-
-    background:#111;
-    color:white;
-
-    text-align:center;
-
-    padding:30px;
-
-    border-top:2px solid #00cc66;
-}
-
-footer p{
-    margin:8px 0;
+.card-body p {
+  font-size: 0.9rem;
+  color: #555;
 }

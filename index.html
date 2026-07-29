@@ -1,152 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fit_Zone_New</title>
-    <link rel="stylesheet" href="home.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitZone - Home Content</title>
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="navBar.css">
+  <link rel="stylesheet" href="footer.css">
 </head>
 <body>
-    <nav>
-    <ul>
 
-        <li><a href="index.html">Home</a></li>
+  
+  <header class="navbar-header">
+    <nav class="navbar">
+      
+      <div class="nav-logo">
+        <a href="Home.html">
+          <img src="pictures/logo-removebg-preview.png" alt="FitZone Logo">
+        </a>
+      </div>
 
-        <li class="dropdown">
-            <a href="schedules.html">Schedule ▼</a>
+      
+      <ul class="nav-menu">
+        <li><a href="Home.html" class="nav-link">Home</a></li>
+        <li><a href="schedules.html" class="nav-link">Schedule</a></li>
+        <li><a href="Diet_plan1.html" class="nav-link">Diet Plan</a></li>
+        <li><a href="#about" class="nav-link">About Us</a></li>
+        <li><a href="#feedback" class="nav-link">Feedback</a></li>
+      </ul>
 
-        </li>
+      
+      <div class="nav-btn-container">
+        <a href="contact.html" class="nav-contact-btn">Contact Us</a>
+      </div>
+    </nav>
 
-        <li class="dropdown">
-            <a href="Diet_plan1.html">Diet Plan ▼</a>
+  </header>
 
-            
-        </li>
+  
+  <main class="home-container">
 
-        <li><a href="feedback.html">Feedback</a></li>
-
-        <li><a href="contact.html">Contact Us</a></li>
-
-    </ul>
-</nav>
-
-<section class="hero">
-
-    <header class="hero-content">
-
-        <h1>FITZONE</h1>
-
-        <p>
-            Transform Your Body, Improve Your Health,
-            Achieve Your Fitness Goals.
-        </p>
-
-        <a href="startyourjourney.html" class="btn">Start Your Journey</a>
-
-    </header>
-
-</section>
-
-<section class="about">
-
-    <h2>About Us</h2>
-
-    <p>
-        Welcome to FitZone, your trusted fitness partner.
-        We help individuals achieve their health and fitness
-        goals through personalized workout schedules,
-        nutrition guidance, and healthy lifestyle support.
-
-        Whether you are a beginner or an experienced athlete,
-        FitZone provides the tools and motivation needed to
-        transform your body and improve your overall well-being.
-    </p>
-
-</section>
-
-<!-- Features -->
-<section class="features">
-
-    <article class="feature">
-        <h3>🏋️ Home Workouts</h3>
-        <p>
-            Exercise plans for beginners and advanced users
-            without expensive equipment.
-        </p>
-    </article>
-
-    <article class="feature">
-        <h3>💪 Gym Training</h3>
-        <p>
-            Professional workout routines for muscle building
-            and strength development.
-        </p>
-    </article>
-
-    <article class="feature">
-        <h3>🥗 Diet Plans</h3>
-        <p>
-            Healthy meal plans for weight loss and weight gain goals.
-        </p>
-    </article>
-</section>
-
-<section class="services">
-
-    <h2>Our Programs</h2>
-
-    <section class="cards">
-
-        <article class="card">
-            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80" alt="Home Fitness">
-
-            <section class="card-content">
-                <h3>Home Fitness</h3>
-                <p>
-                    Workout schedules designed for convenience and flexibility.
-                </p>
-            </section>
-        </article>
-
-        <article class="card">
-            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" alt="Gym Programs">
-
-            <section class="card-content">
-                <h3>Gym Programs</h3>
-                <p>
-                    Structured gym plans for full body transformation.
-                </p>
-            </section>
-        </article>
-
-        <article class="card">
-            <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80" alt="Nutrition Guide">
-
-            <section class="card-content">
-                <h3>Nutrition Guide</h3>
-                <p>
-                    Healthy eating strategies to support your fitness journey.
-                </p>
-            </section>
-        </article>
-
+   
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1>FitZone</h1>
+        <p>Transform Your Body, Improve Your Health, Achieve Your Fitness Goals.</p>
+        <a href="#programs" class="btn-primary">Start Your Journey</a>
+      </div>
     </section>
 
-</section>
+    
+    <section class="about-section">
+      <h2>About Us</h2>
+      <p>
+        Welcome to FitZone, your trusted fitness partner. We help individuals achieve their health and fitness goals through personalized workout schedules, nutrition guidance, and healthy lifestyle support. Whether you are a beginner or an experienced athlete, FitZone provides the tools and motivation needed to transform your body and improve your overall well-being.
+      </p>
+    </section>
 
-<footer>
+    
+    <section id="programs" class="programs-section">
+      <h2>Our Programs</h2>
+      
+      <div class="cards-container">
+       
+        <article class="program-card">
+          <div class="card-img">
+            <img src="pictures/homeworkout.jpg" alt="Home Fitness">
+          </div>
+          <div class="card-body">
+            <h3>Home Fitness</h3>
+            <p>Workouts Schedule designed for convenience and flexibility.</p>
+          </div>
+        </article>
 
-    <h3>FitZone</h3>
+        
+        <article class="program-card">
+          <div class="card-img">
+            <img src="pictures/gymworkout.avif" alt="Gym Programs">
+          </div>
+          <div class="card-body">
+            <h3>Gym Programs</h3>
+            <p>Structured gym plans for full body transformation.</p>
+          </div>
+        </article>
 
-    <p>Your Ultimate Fitness Companion</p>
+        
+        <article class="program-card">
+          <div class="card-img">
+            <img src="pictures/nutrition" alt="Nutrition Guide">
+          </div>
+          <div class="card-body">
+            <h3>Nutrition Guide</h3>
+            <p>Healthy eating strategies to support your fitness journey.</p>
+          </div>
+        </article>
+      </div>
+    </section>
 
-    <p>Email: info@fitzone.com</p>
+  </main>
+ 
+  <footer class="site-footer">
+    
+    <div class="footer-social-bar">
+      <div class="social-icons">
+        <a href="https://facebook.com" target="_blank" class="social-btn" aria-label="Facebook">
+          <img src="pictures/facebook (2).png" alt="Facebook">
+        </a>
+        <a href="https://youtube.com" target="_blank" class="social-btn" aria-label="YouTube">
+          <img src="pictures/youtube.png" alt="YouTube">
+        </a>
+        <a href="https://instagram.com" target="_blank" class="social-btn" aria-label="Instagram">
+          <img src="pictures/instagram.png" alt="Instagram">
+        </a>
+        <a href="https://twitter.com" target="_blank" class="social-btn" aria-label="Twitter">
+          <img src="pictures/social.png" alt="Twitter">
+        </a>
+      </div>
+    </div>
 
-    <p>Phone: +94 71 234 5678</p>
-
-    <p>© 2026 FitZone. All Rights Reserved.</p>
-
-</footer>
-
+    
+    <div class="footer-bottom-bar">
+      <p>&copy; 2026 FitZone. All Rights Reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
