@@ -1,0 +1,161 @@
+/* Reset */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial, sans-serif;
+    background:#f4f4f4;
+
+    display:grid;
+
+    grid-template-rows:auto auto 1fr auto;
+
+    min-height:100vh;
+
+}
+
+/* Header */
+
+header{
+
+    background:#004080;
+    color:white;
+    text-align:center;
+    padding:20px;
+    border:2px solid black;
+
+}
+
+
+nav ul{
+
+    list-style:none;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:30px;
+
+    padding:15px;
+
+}
+
+nav a{
+
+    text-decoration:none;
+    color:white;
+
+}
+
+/* Main Grid */
+
+main{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:20px;
+
+    padding:20px;
+
+}
+
+/* Feedback Form */
+
+.feedback-form{
+
+    background:white;
+    border:2px solid black;
+    padding:20px;
+
+}
+
+.feedback-form h2{
+
+    margin-bottom:20px;
+
+}
+
+form{
+
+    display:grid;
+
+    gap:15px;
+
+}
+
+input,
+select,
+textarea{
+
+    padding:10px;
+    border:1px solid gray;
+
+}
+
+/* Rating (Flexbox) */
+
+.rating{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+/* Buttons (Flexbox) */
+
+.buttons{
+
+    display:flex;
+
+    gap:20px;
+
+}
+
+button{
+
+    padding:10px 20px;
+    border:none;
+    background:#004080;
+    color:white;
+    cursor:pointer;
+
+}
+
+button:hover{
+
+    background:#0066cc;
+
+}
+
+/* Aside */
+
+aside{
+
+    background:#dfefff;
+    border:2px solid black;
+    padding:20px;
+
+}
+
+/* Footer */
+
+footer{
+
+    background:#004080;
+    color:white;
+    text-align:center;
+    padding:15px;
+    border:2px solid black;
+
+}
