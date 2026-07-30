@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitZone - Workout Calendar</title>
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="navBar.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Firebase Compat SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+    <style>
+        :root {
+            --fz-green: #14804a;
+            --fz-green-hover: #0e6238;
+            --fz-light-bg: #f4f6f8;
+            --fz-dark-footer: #1a202c;
+            --fz-text-main: #2d3748;
+            --fz-border: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--fz-light-bg);
+            color: var(--fz-text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+        }
+
+        /* Navbar Style */
+        .fz-navbar {
+            background-color: var(--fz-green);
+            padding: 15px 0;
+        }
+
+        .fz-navbar .nav-link {
+            color: #ffffff !important;
+            font-weight: 600;
+            margin: 0 10px;
+            transition: opacity 0.2s;
+        }
+
+        .fz-navbar .nav-link:hover {
+            opacity: 0.8;
+        }
+
+        .btn-contact-us {
+            border: 1.5px solid #ffffff;
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 6px 20px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-contact-us:hover {
+            background-color: #ffffff;
+            color: var(--fz-green);
+        }
+
+        /* Content Layout */
+        .main-wrapper {
+            flex: 1;
+            padding: 40px 0;
+        }
+
+        .fitzone-card {
+            background: #ffffff;
+            border: 1px solid var(--fz-border);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+        }
+
+        .btn-fz-green {
+            background-color: var(--fz-green);
+            color: #ffffff;
+            font-weight: 700;
+            border-radius: 10px;
+            padding: 12px 24px;
+            border: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-fz-green:hover {
+            background-color: var(--fz-green-hover);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .form-control-fz {
+            background: #f8fafc;
+            border: 1px solid var(--fz-border);
+            color: #2d3748;
+            border-radius: 10px;
+            padding: 12px 16px;
+        }
+
+        .form-control-fz:focus {
+            background: #ffffff;
+            border-color: var(--fz-green);
+            box-shadow: 0 0 0 3px rgba(20, 128, 74, 0.15);
+        }
+
+        /* Calendar Grid */
+        .calendar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+
+        .day-name {
+            text-align: center;
+            font-weight: 700;
+            color: var(--fz-green);
+            padding: 10px 0;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            background-color: #f8fafc;
+            border: 1px solid var(--fz-border);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #2d3748;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .calendar-day:hover:not(.empty) {
+            border-color: var(--fz-green);
+            background-color: #eef7f2;
+            transform: scale(1.03);
+        }
+
+        .calendar-day.empty {
+            background: transparent;
+            border: none;
+            cursor: default;
+        }
+
+        .calendar-day.today {
+            border: 2px solid #3182ce;
+        }
+
+        .calendar-day.workout-done {
+            background-color: #d1e7dd;
+            border-color: var(--fz-green);
+            color: var(--fz-green);
+            font-weight: 800;
+        }
+
+        .calendar-day.workout-done::after {
+            content: '✓';
+            font-size: 14px;
+            font-weight: 900;
+            color: var(--fz-green);
+            margin-top: 2px;
+        }
+
+        .stat-badge {
+            background: #f8fafc;
+            border: 1px solid var(--fz-border);
+            border-radius: 12px;
+            padding: 15px 20px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--fz-green);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--fz-dark-footer);
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+     <header class="navbar-header">
+    <nav class="navbar">
+      
+      <div class="nav-logo">
+        <a href="Home.html">
+          <img src="pictures/logo-removebg-preview.png" alt="FitZone Logo">
+        </a>
+      </div>
+
+      
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="schedules.html" class="nav-link">Schedule</a></li>
+        <li><a href="Diet_plan1.html" class="nav-link">Diet Plan</a></li>
+        <li><a href="#about" class="nav-link">About Us</a></li>
+        <li><a href="Calender.html" class="nav-link">Calender</a></li>
+        <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+      </ul>
+
+      
+      <div class="nav-btn-container">
+        <a href="contact.html" class="nav-contact-btn">Contact Us</a>
+      </div>
+    </nav>
+
+  </header>
+
+    <!-- HEADER TITLE -->
+    <div class="text-center mt-4">
+        <h2 class="fw-bold" style="color: #2d3748;">FitZone <span style="color: var(--fz-green);">Tracker</span></h2>
+        <p class="text-muted small">Mark & track your daily workout consistency</p>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper">
+        <div class="container">
+            
+            <!-- SECTION 1: LOGIN / OTP FORM -->
+            <div id="auth-section" class="row justify-content-center">
+                <div class="col-md-5">
+                    <div class="fitzone-card">
+                        <div class="text-center mb-4">
+                            <i class="fa-solid fa-fire-flame-curved fs-1 text-success mb-2"></i>
+                            <h4 class="fw-bold">Member Login</h4>
+                            <p class="text-muted small">Enter details to access your workout calendar</p>
+                        </div>
+
+                        <!-- Step 1: Phone + Name Input -->
+                        <form id="phone-form" onsubmit="sendOTP(event)">
+                            <div class="mb-3 text-start">
+                                <label class="form-label text-muted small fw-semibold">Your Name</label>
+                                <input type="text" id="input-username" class="form-control form-control-fz" placeholder="e.g. Kasun Perera" required>
+                            </div>
+                            <div class="mb-3 text-start">
+                                <label class="form-label text-muted small fw-semibold">Phone Number</label>
+                                <input type="tel" id="input-phone" class="form-control form-control-fz" placeholder="+94771234567" required>
+                            </div>
+                            
+                            <div id="recaptcha-container" class="mb-3 d-flex justify-content-center"></div>
+
+                            <button type="submit" id="btn-send-otp" class="btn btn-fz-green w-100">
+                                Send OTP Code <i class="fa-solid fa-arrow-right ms-2"></i>
+                            </button>
+                        </form>
+
+                        <!-- Step 2: OTP Verification Input -->
+                        <form id="otp-form" onsubmit="verifyOTP(event)" class="d-none">
+                            <div class="alert alert-success py-2 small" role="alert">
+                                OTP Code requested successfully!
+                            </div>
+                            <div class="mb-3 text-start">
+                                <label class="form-label text-muted small fw-semibold">Enter 6-Digit OTP</label>
+                                <input type="text" id="input-otp" class="form-control form-control-fz text-center letter-spacing-2 fs-4" maxlength="6" placeholder="123456" required>
+                            </div>
+                            <button type="submit" id="btn-verify-otp" class="btn btn-fz-green w-100">
+                                Verify & Access Calendar <i class="fa-solid fa-check-circle ms-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: WORKOUT CALENDAR DASHBOARD -->
+            <div id="dashboard-section" class="d-none">
+                <div class="row g-4">
+                    
+                    <!-- Left Sidebar: Actions & Quick Stats -->
+                    <div class="col-lg-4">
+                        <div class="fitzone-card mb-4">
+                            <h5 class="fw-bold mb-3"><i class="fa-solid fa-bolt text-warning me-2"></i>Today's Action</h5>
+                            <p class="text-muted small">Mark your workout status for (<span id="today-date-str"></span>):</p>
+                            
+                            <button id="btn-toggle-today" onclick="toggleTodayWorkout()" class="btn btn-fz-green w-100 py-3 fs-5 mb-2">
+                                <i class="fa-solid fa-check me-2"></i> Mark Today Done
+                            </button>
+                            <small id="today-status-msg" class="text-muted d-block text-center"></small>
+                        </div>
+
+                        <div class="fitzone-card">
+                            <h5 class="fw-bold mb-3"><i class="fa-solid fa-chart-line text-success me-2"></i>Monthly Progress</h5>
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <div class="stat-badge">
+                                        <div class="stat-value" id="stat-workouts">0</div>
+                                        <small class="text-muted">Workouts</small>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="stat-badge">
+                                        <div class="stat-value" id="stat-rest" style="color: #718096;">0</div>
+                                        <small class="text-muted">Rest Days</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Interactive Calendar -->
+                    <div class="col-lg-8">
+                        <div class="fitzone-card">
+                            <div class="calendar-header">
+                                <button class="btn btn-outline-secondary btn-sm rounded-circle" onclick="changeMonth(-1)">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
+                                <h4 class="fw-bold m-0" id="calendar-month-year" style="color: var(--fz-green);">Month Year</h4>
+                                <button class="btn btn-outline-secondary btn-sm rounded-circle" onclick="changeMonth(1)">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                            </div>
+
+                            <!-- Calendar Grid -->
+                            <div class="calendar-grid mb-2">
+                                <div class="day-name">Sun</div>
+                                <div class="day-name">Mon</div>
+                                <div class="day-name">Tue</div>
+                                <div class="day-name">Wed</div>
+                                <div class="day-name">Thu</div>
+                                <div class="day-name">Fri</div>
+                                <div class="day-name">Sat</div>
+                            </div>
+                            <div id="calendar-days" class="calendar-grid"></div>
+
+                            <!-- Legend -->
+                            <div class="d-flex justify-content-center gap-4 mt-4 pt-3 border-top small text-muted">
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="d-inline-block rounded-circle" style="width: 12px; height: 12px; border: 2px solid #3182ce;"></span> Today
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="d-inline-block rounded-circle" style="width: 12px; height: 12px; background-color: #d1e7dd; border: 1px solid var(--fz-green);"></span> Exercise Completed
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+     <div class="footer-bottom-bar">
+      <p>&copy; 2026 FitZone. All Rights Reserved.</p>
+    </div>
+
+    <!-- FIREBASE & APP SCRIPT -->
+    <script>
+        // YOUR UPDATED FIREBASE CONFIGURATION
+        const firebaseConfig = {
+            apiKey: "AIzaSyAO07mRzt_Y96_kr-obB2HSroUWUIpTcPg",
+            authDomain: "fitzone-app-76c6f.firebaseapp.com",
+            projectId: "fitzone-app-76c6f",
+            storageBucket: "fitzone-app-76c6f.firebasestorage.app",
+            messagingSenderId: "801841450064",
+            appId: "1:801841450064:web:f13de86d360ff0c2bd5555",
+            measurementId: "G-303FFK249Z"
+        };
+
+        // Initialize Firebase
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // State Variables
+        let currentUser = null;
+        let confirmationResult = null;
+        let currentDate = new Date();
+        let workoutDates = new Set();
+
+        // Setup Recaptcha
+        window.onload = function() {
+            window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+                'size': 'normal'
+            });
+            window.recaptchaVerifier.render();
+
+            const options = { weekday: 'short', month: 'short', day: 'numeric' };
+            document.getElementById('today-date-str').innerText = new Date().toLocaleDateString('en-US', options);
+        };
+
+        // Auth Listener
+        auth.onAuthStateChanged(async (user) => {
+            if (user) {
+                currentUser = user;
+                document.getElementById('auth-section').classList.add('d-none');
+                document.getElementById('dashboard-section').classList.remove('d-none');
+                document.getElementById('user-display-name').classList.remove('d-none');
+                document.getElementById('btn-nav-logout').classList.remove('d-none');
+                document.getElementById('btn-contact').classList.add('d-none');
+                
+                // Fetch user data
+                const userDoc = await db.collection('users').doc(user.uid).get();
+                if (userDoc.exists) {
+                    document.getElementById('user-display-name').innerText = "Hi, " + (userDoc.data().username || 'Member');
+                }
+
+                await loadUserWorkouts();
+                renderCalendar();
+            } else {
+                currentUser = null;
+                document.getElementById('auth-section').classList.remove('d-none');
+                document.getElementById('dashboard-section').classList.add('d-none');
+                document.getElementById('user-display-name').classList.add('d-none');
+                document.getElementById('btn-nav-logout').classList.add('d-none');
+                document.getElementById('btn-contact').classList.remove('d-none');
+            }
+        });
+
+        // STEP 1: Send OTP
+        async function sendOTP(e) {
+            e.preventDefault();
+            const phone = document.getElementById('input-phone').value.trim();
+            const username = document.getElementById('input-username').value.trim();
+
+            if (!phone || !username) {
+                alert('Please fill in all details.');
+                return;
+            }
+
+            localStorage.setItem('temp_username', username);
+
+            try {
+                document.getElementById('btn-send-otp').disabled = true;
+                document.getElementById('btn-send-otp').innerText = 'Sending OTP...';
+
+                confirmationResult = await auth.signInWithPhoneNumber(phone, window.recaptchaVerifier);
+                
+                document.getElementById('phone-form').classList.add('d-none');
+                document.getElementById('otp-form').classList.remove('d-none');
+            } catch (error) {
+                alert('Error sending OTP: ' + error.message);
+                document.getElementById('btn-send-otp').disabled = false;
+                document.getElementById('btn-send-otp').innerText = 'Send OTP Code';
+            }
+        }
+
+        // STEP 2: Verify OTP
+        async function verifyOTP(e) {
+            e.preventDefault();
+            const otp = document.getElementById('input-otp').value.trim();
+
+            try {
+                document.getElementById('btn-verify-otp').disabled = true;
+                document.getElementById('btn-verify-otp').innerText = 'Verifying...';
+
+                const result = await confirmationResult.confirm(otp);
+                const user = result.user;
+
+                const username = localStorage.getItem('temp_username') || 'Member';
+                await db.collection('users').doc(user.uid).set({
+                    username: username,
+                    phone: user.phoneNumber,
+                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                }, { merge: true });
+
+            } catch (error) {
+                alert('Invalid OTP code. Please try again.');
+                document.getElementById('btn-verify-otp').disabled = false;
+                document.getElementById('btn-verify-otp').innerText = 'Verify & Access Calendar';
+            }
+        }
+
+        function logout() {
+            auth.signOut();
+        }
+
+        async function loadUserWorkouts() {
+            if (!currentUser) return;
+            workoutDates.clear();
+
+            const snapshot = await db.collection('users')
+                                    .doc(currentUser.uid)
+                                    .collection('workouts')
+                                    .get();
+
+            snapshot.forEach(doc => {
+                if (doc.data().completed) {
+                    workoutDates.add(doc.id);
+                }
+            });
+        }
+
+        function renderCalendar() {
+            const monthYearText = document.getElementById('calendar-month-year');
+            const calendarDays = document.getElementById('calendar-days');
+            calendarDays.innerHTML = '';
+
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+
+            const monthNames = ["January", "February", "March", "April", "May", "June", 
+                                "July", "August", "September", "October", "November", "December"];
+            monthYearText.innerText = `${monthNames[month]} ${year}`;
+
+            const firstDayIndex = new Date(year, month, 1).getDay();
+            const totalDays = new Date(year, month + 1, 0).getDate();
+
+            const today = new Date();
+            const todayStr = formatDate(today.getFullYear(), today.getMonth(), today.getDate());
+
+            for (let i = 0; i < firstDayIndex; i++) {
+                const emptyDiv = document.createElement('div');
+                emptyDiv.classList.add('calendar-day', 'empty');
+                calendarDays.appendChild(emptyDiv);
+            }
+
+            let workoutCount = 0;
+
+            for (let day = 1; day <= totalDays; day++) {
+                const dayDiv = document.createElement('div');
+                dayDiv.classList.add('calendar-day');
+                dayDiv.innerText = day;
+
+                const dateStr = formatDate(year, month, day);
+
+                if (dateStr === todayStr) {
+                    dayDiv.classList.add('today');
+                }
+
+                if (workoutDates.has(dateStr)) {
+                    dayDiv.classList.add('workout-done');
+                    workoutCount++;
+                }
+
+                dayDiv.onclick = () => toggleWorkoutDate(dateStr);
+
+                calendarDays.appendChild(dayDiv);
+            }
+
+            document.getElementById('stat-workouts').innerText = workoutCount;
+            document.getElementById('stat-rest').innerText = totalDays - workoutCount;
+
+            const isTodayCompleted = workoutDates.has(todayStr);
+            const btnToday = document.getElementById('btn-toggle-today');
+            const todayMsg = document.getElementById('today-status-msg');
+
+            if (isTodayCompleted) {
+                btnToday.classList.remove('btn-fz-green');
+                btnToday.classList.add('btn-outline-danger');
+                btnToday.innerHTML = `<i class="fa-solid fa-xmark me-2"></i> Cancel Today's Workout`;
+                todayMsg.innerText = "Status: Workout Marked Completed 🎉";
+                todayMsg.className = "text-success d-block text-center mt-2 fw-semibold";
+            } else {
+                btnToday.classList.remove('btn-outline-danger');
+                btnToday.classList.add('btn-fz-green');
+                btnToday.innerHTML = `<i class="fa-solid fa-check me-2"></i> Mark Today Done`;
+                todayMsg.innerText = "Status: Not marked yet";
+                todayMsg.className = "text-muted d-block text-center mt-2";
+            }
+        }
+
+        function changeMonth(direction) {
+            currentDate.setMonth(currentDate.getMonth() + direction);
+            renderCalendar();
+        }
+
+        function toggleTodayWorkout() {
+            const today = new Date();
+            const todayStr = formatDate(today.getFullYear(), today.getMonth(), today.getDate());
+            toggleWorkoutDate(todayStr);
+        }
+
+        async function toggleWorkoutDate(dateStr) {
+            if (!currentUser) return;
+
+            const isDone = workoutDates.has(dateStr);
+            
+            if (isDone) {
+                workoutDates.delete(dateStr);
+                await db.collection('users').doc(currentUser.uid).collection('workouts').doc(dateStr).delete();
+            } else {
+                workoutDates.add(dateStr);
+                await db.collection('users').doc(currentUser.uid).collection('workouts').doc(dateStr).set({
+                    completed: true,
+                    loggedAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+            }
+
+            renderCalendar();
+        }
+
+        function formatDate(year, month, day) {
+            const m = String(month + 1).padStart(2, '0');
+            const d = String(day).padStart(2, '0');
+            return `${year}-${m}-${d}`;
+        }
+    </script>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
