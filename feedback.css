@@ -1,4 +1,12 @@
-/* Reset */
+:root{
+    --primary-green: #198754;
+    --light-green: #e7f9e5;
+    --light-bg: #ffffff;
+    --card-border: #7cbf98;
+    --text-dark: #1c1c1c;
+    --text-gray: #5f6a63;
+    --radius: 16px;
+}
 
 *{
     margin:0;
@@ -10,107 +18,307 @@ body{
 
     font-family:Arial, sans-serif;
     background:#f4f4f4;
-
     display:grid;
-
     grid-template-rows:auto auto 1fr auto;
-
     min-height:100vh;
 
 }
 
-
-/* Main Grid */
-
-main{
-
-    display:grid;
-
-    grid-template-columns:2fr 1fr;
-
-    gap:20px;
-
-    padding:20px;
-
+body{
+    font-family: 'Poppins', Arial, sans-serif;
+    background: var(--light-bg);
+    color: var(--text-dark);
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    min-height: 100vh;
 }
 
-/* Feedback Form */
+/*Page Banner*/
+.page-banner{
+    background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+    color: #198754;
+    text-align: center;
+    padding: 40px 20px;
+}
 
+.page-banner h1{
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.page-banner p{
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/*Main Layout*/
+main{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    padding: 20px 60px;
+    align-items: start;
+}
+
+/*Feedback Form Card*/
 .feedback-form{
-
-    background:white;
-    border:2px solid black;
-    padding:20px;
-
+    background: #fff;
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 40px;
+    box-shadow: 0 8px 24px rgba(31, 92, 60, 0.08);
 }
 
 .feedback-form h2{
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--dark-green);
+    margin-bottom: 6px;
+}
 
-    margin-bottom:20px;
-
+.form-subtext{
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    margin-bottom: 28px;
 }
 
 form{
+    display: grid;
+    gap: 22px;
+}
 
-    display:grid;
+.field-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
 
-    gap:15px;
+.field-group{
+    display: grid;
+    gap: 8px;
+}
 
+label{
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-dark);
 }
 
 input,
 select,
 textarea{
-
-    padding:10px;
-    border:1px solid gray;
-
+    padding: 12px 14px;
+    border: 1px solid #cfd8d3;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    background: #fafcfb;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
 }
 
-/* Rating (Flexbox) */
-
-.rating{
-
-    display:flex;
-
-    gap:20px;
-
-    flex-wrap:wrap;
-
+input:focus,
+select:focus,
+textarea:focus{
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(46, 125, 82, 0.15);
 }
 
-/* Buttons (Flexbox) */
+textarea{
+    resize: vertical;
+}
 
+/*Star Rating (CSS only, hover + select)*/
+.star-rating{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 4px;
+    font-size: 2rem;
+}
+
+.star-rating input{
+    display: none;
+    width: auto;
+    padding: 0;
+}
+
+.star-rating label{
+    color: #d8dfda;
+    cursor: pointer;
+    transition: color 0.15s;
+    font-size: 2rem;
+}
+
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label{
+    color: #f5b642;
+}
+
+/*Pill Choices (difficulty / recommend)*/
+.pill-group,
+.toggle-group{
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.pill{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--light-green);
+    border: 1px solid var(--card-border);
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.pill:hover{
+    border-color: var(--primary-green);
+}
+
+.pill input{
+    display: none;
+}
+
+.pill:has(input:checked){
+    background: var(--primary-green);
+    color: #fff;
+    border-color: var(--primary-green);
+}
+
+/*Buttons*/
 .buttons{
-
-    display:flex;
-
-    gap:20px;
-
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
 }
 
 button{
-
-    padding:10px 20px;
-    border:none;
-    background:#004080;
-    color:white;
-    cursor:pointer;
-
+    padding: 13px 30px;
+    border: none;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
 }
 
-button:hover{
-
-    background:#0066cc;
-
+button[type="submit"]{
+    background: var(--primary-green);
+    color: #fff;
 }
 
-/* Aside */
+button[type="submit"]:hover{
+    background: var(--dark-green);
+}
 
+button[type="reset"]{
+    background: #fff;
+    color: var(--text-gray);
+    border: 1px solid #cfd8d3;
+}
+
+button[type="reset"]:hover{
+    background: #f1f1f1;
+}
+
+button:active{
+    transform: scale(0.98);
+}
+
+/*Aside*/
 aside{
+    background: #fff;
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: 0 8px 24px rgba(31, 92, 60, 0.08);
+    display: grid;
+    gap: 22px;
+}
 
-    background:#dfefff;
-    border:2px solid black;
-    padding:20px;
+aside h2{
+    color: var(--dark-green);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
 
+.why-item{
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+}
+
+.why-icon{
+    font-size: 1.4rem;
+    background: var(--light-green);
+    padding: 10px;
+    border-radius: 10px;
+    line-height: 1;
+}
+
+.why-item h3{
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--text-dark);
+}
+
+.why-item p{
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    line-height: 1.5;
+}
+
+.stat-box{
+    background: var(--light-green);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+}
+
+.stat-box h3{
+    color: var(--primary-green);
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.stat-box p{
+    color: var(--text-gray);
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
+/*Responsive*/
+
+@media (max-width: 900px){
+    main{
+        grid-template-columns: 1fr;
+        padding: 30px 20px;
+    }
+
+    .field-row{
+        grid-template-columns: 1fr;
+    }
+
+    .page-banner{
+        padding: 40px 20px;
+    }
+
+    .page-banner h1{
+        font-size: 1.6rem;
+    }
+
+    .feedback-form{
+        padding: 25px;
+    }
 }

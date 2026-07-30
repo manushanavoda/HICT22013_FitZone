@@ -37,41 +37,89 @@
   </header>
 
 
+    <section class="page-banner">
+        <h1>How's Your Workout Schedule Going?</h1>
+        <p>Tell us about your training plan so we can fine-tune it for your goals.</p>
+    </section>
+
     <main>
 
         <section class="feedback-form">
-            <h2>Send Your Feedback</h2>
+            <h2>Share Your Feedback</h2>
+            <p class="form-subtext">It only takes a minute and helps us build better schedules for everyone.</p>
 
             <form>
 
-                <label>Name</label>
-                <input type="text" placeholder="Enter your name">
-
-                <label>Email</label>
-                <input type="email" placeholder="Enter your email">
-
-                <label>Course</label>
-                <select>
-                    <option>Select Course</option>
-                    <option>Web Development</option>
-                    <option>Programming</option>
-                    <option>Database</option>
-                </select>
-
-                <label>Rating</label>
-
-                <div class="rating">
-                    <label><input type="radio" name="rate"> Excellent</label>
-                    <label><input type="radio" name="rate"> Good</label>
-                    <label><input type="radio" name="rate"> Average</label>
-                    <label><input type="radio" name="rate"> Poor</label>
+                <div class="field-group">
+                    <label for="name">Full Name</label>
+                    <input id="name" type="text" placeholder="Enter your name">
                 </div>
 
-                <label>Comments</label>
-                <textarea rows="5" placeholder="Write your feedback..."></textarea>
+                <div class="field-group">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" placeholder="Enter your email">
+                </div>
+
+                <div class="field-row">
+                    <div class="field-group">
+                        <label for="schedule">Workout Schedule</label>
+                        <select id="schedule">
+                            <option>Select your schedule</option>
+                            <option>Home Fitness Plan</option>
+                            <option>Gym Strength Program</option>
+                            <option>Cardio & Fat Loss Plan</option>
+                            <option>Full Body Transformation</option>
+                        </select>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="duration">Weeks Completed</label>
+                        <select id="duration">
+                            <option>Select duration</option>
+                            <option>1–2 weeks</option>
+                            <option>3–4 weeks</option>
+                            <option>5–8 weeks</option>
+                            <option>8+ weeks</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label>How would you rate this schedule?</label>
+                    <div class="star-rating">
+                        <input type="radio" id="star5" name="stars" value="5"><label for="star5">★</label>
+                        <input type="radio" id="star4" name="stars" value="4"><label for="star4">★</label>
+                        <input type="radio" id="star3" name="stars" value="3"><label for="star3">★</label>
+                        <input type="radio" id="star2" name="stars" value="2"><label for="star2">★</label>
+                        <input type="radio" id="star1" name="stars" value="1"><label for="star1">★</label>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label>How was the difficulty level?</label>
+                    <div class="pill-group">
+                        <label class="pill"><input type="radio" name="difficulty"> Too Easy</label>
+                        <label class="pill"><input type="radio" name="difficulty"> Just Right</label>
+                        <label class="pill"><input type="radio" name="difficulty"> Too Hard</label>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label>Would you recommend this schedule to a friend?</label>
+                    <div class="toggle-group">
+                        <label class="pill"><input type="radio" name="recommend"> Yes</label>
+                        <label class="pill"><input type="radio" name="recommend"> Maybe</label>
+                        <label class="pill"><input type="radio" name="recommend"> No</label>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label for="comments">Additional Comments</label>
+                    <textarea id="comments" rows="4" placeholder="Tell us what worked, what didn't, or what you'd like to see..."></textarea>
+                </div>
 
                 <div class="buttons">
-                    <button type="submit">Submit</button>
+                    <button type="submit">Submit Feedback</button>
                     <button type="reset">Clear</button>
                 </div>
 
@@ -79,14 +127,40 @@
         </section>
 
         <aside>
-            <h2>Why Feedback?</h2>
+            <h2>Why Your Feedback Matters</h2>
 
-            <p>
-                Your feedback helps improve our services.
-            </p>
+            <div class="why-item">
+                <span class="why-icon">📈</span>
+                <div>
+                    <h3>Better Schedules</h3>
+                    <p>We adjust intensity and rest days based on real results.</p>
+                </div>
+            </div>
+
+            <div class="why-item">
+                <span class="why-icon">🎯</span>
+                <div>
+                    <h3>Personalized Plans</h3>
+                    <p>Your input shapes future home fitness and gym programs.</p>
+                </div>
+            </div>
+
+            <div class="why-item">
+                <span class="why-icon">🤝</span>
+                <div>
+                    <h3>Community Driven</h3>
+                    <p>Every rating helps other members choose the right plan.</p>
+                </div>
+            </div>
+
+            <div class="stat-box">
+                <h3>1000+</h3>
+                <p>Members have shared feedback so far</p>
+            </div>
         </aside>
 
     </main>
+
 
     <footer class="site-footer">
     
