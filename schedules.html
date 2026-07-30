@@ -280,6 +280,7 @@
 
         
 
+
         // 1. Home Workout සහ Weight Loss male තේරුවොත්
         if (workoutType === 'home' && goal === 'loss' && level === 'beginner' && Gender === 'male' && Area === 'full') {
             window.location.href = 'HLBMF.html'; // ඒ අදාළ page එකේ නම
@@ -370,19 +371,12 @@
         }
 
 
-        // 3. Home Workout විතරක් තේරුවොත්
-        else if (workoutType === 'home') {
-            window.location.href = 'home-workouts.html';
-        }
-        // 4. Gym Workout විතරක් තේරුවොත්
-        else if (workoutType === 'gym') {
-            window.location.href = 'gym-workouts.html';
-        }
-        // 5. මොකුත් තෝරලා නැත්නම් (All Types) සාමාන්‍ය Schedules Page එකට යැවීම
-        else {
-            window.location.href = 'all-schedules.html';
+        else if(!workoutType || !goal || !level || !Gender || !Area){
+            window.location.href = "Filter_warning.html";
         }
     }
+        
+        
 
     // Clear All Button එක සඳහා
     function resetForm() {
