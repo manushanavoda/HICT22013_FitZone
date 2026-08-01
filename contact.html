@@ -4,10 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FitZone - Contact Us</title>
+    <link rel="stylesheet" href="navBar.css">
     <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="footer.css">
 </head>
 <body>
 
+    <!-- Header / Navbar Section -->
+    <header class="navbar-header">
+        <nav class="navbar">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="pictures/logo-removebg-preview.png" alt="FitZone Logo">
+                </a>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="schedules.html" class="nav-link">Schedule</a></li>
+                <li><a href="Diet_plan1.html" class="nav-link">Diet Plan</a></li>
+                <li><a href="index.html#about" class="nav-link">About Us</a></li>
+                <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+            </ul>
+
+            <div class="nav-btn-container">
+                <a href="contact.html" class="nav-contact-btn">Contact Us</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Grid -->
     <main class="contact-main-grid">
         
         <section class="contact-card form-wrapper">
@@ -57,10 +83,9 @@
                         <p>info@fitzone.com</p>
                     </div>
                 </div>
-            </div>
 
-            <!-- Location Box -->
-<div class="info-box">
+                <!-- Location Box -->
+                <div class="info-box">
                     <span class="icon">📍</span>
                     <div>
                         <h3>Location</h3>
@@ -69,8 +94,8 @@
                 </div>
             </div>
 
-
-           <div class="social-wrapper">
+            <!-- Social Media Section -->
+            <div class="social-wrapper">
                 <h3>Follow Our Community</h3>
                 <div class="social-links">
                     <a href="https://facebook.com" target="_blank" class="social-icon">Facebook</a>
@@ -80,6 +105,7 @@
                 </div>
             </div>
 
+            <!-- Embedded Google Map -->
             <div class="map-wrapper" style="margin-top: 15px; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
                 <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31674.57708812457!2d79.9723!3d7.0874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2fb07c3bf8e4b%3A0xb3e18501e67909cf!2sYakkala!5e0!3m2!1sen!2slk!4v1700000000000!5m2!1sen!2slk" 
@@ -94,6 +120,30 @@
         </section>
 
     </main>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="footer-social-bar">
+            <div class="social-icons">
+                <a href="https://facebook.com" target="_blank" class="social-btn" aria-label="Facebook">
+                    <img src="pictures/facebook (2).png" alt="Facebook">
+                </a>
+                <a href="https://youtube.com" target="_blank" class="social-btn" aria-label="YouTube">
+                    <img src="pictures/youtube.png" alt="YouTube">
+                </a>
+                <a href="https://instagram.com" target="_blank" class="social-btn" aria-label="Instagram">
+                    <img src="pictures/instagram.png" alt="Instagram">
+                </a>
+                <a href="https://twitter.com" target="_blank" class="social-btn" aria-label="Twitter">
+                    <img src="pictures/social.png" alt="Twitter">
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-bottom-bar">
+            <p>&copy; 2026 FitZone. All Rights Reserved.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
