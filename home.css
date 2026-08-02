@@ -1,4 +1,4 @@
-/* Reset & Base Styles */
+
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +12,7 @@ body {
   background-color: #f9f9f9;
 }
 
-/* ---------------- Hero Section ---------------- */
+/*  Hero Section  */
 .hero-section {
   position: relative;
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
@@ -53,17 +53,17 @@ body {
 }
 
 .btn-primary:hover {
-  background-color: #27ae60; /* පාට පොඩ්ඩක් dark වෙනවා */
-  transform: translateY(-5px) scale(1.03); /* Button එක පික්සල් 5ක් උඩට ඇවිත් පොඩ්ඩක් ලොකු වෙනවා */
-  box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4); /* Green glow shadow එකක් යටින් එනවා */
+  background-color: #27ae60; 
+  transform: translateY(-5px) scale(1.03); 
+  box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4); 
 }
 
 .btn-primary:active {
-  transform: translateY(-2px) scale(1.01); /* Click කරද්දී පොඩ්ඩක් යටට තද වෙන ලස්සන effect එකක් */
+  transform: translateY(-2px) scale(1.01); 
   box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3);
 }
 
-/* ---------------- About Us Section ---------------- */
+/* About Us Section */
 .about-section {
   background: linear-gradient(rgba(240, 240, 240, 0.85), rgba(240, 240, 240, 0.85)),
               url('pictures/aboutus.webp') center/cover no-repeat;
@@ -86,7 +86,7 @@ body {
   line-height: 1.7;
 }
 
-/* ---------------- Our Programs Section ---------------- */
+/*  Our Programs Section  */
 .programs-section {
   padding: 4rem 2rem;
   max-width: 1200px;
@@ -120,12 +120,12 @@ body {
   flex-direction: column;
 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer; /* mouse hover කරද්දී pointer hand එක පෙන්වන්න */
+  cursor: pointer; 
 }
 
 .program-card:hover {
-  transform: translateY(-10px) scale(1.02); /* Card එක පික්සල් 10ක් උඩට උස්සා පොඩ්ඩක් විශාල කරයි */
-  box-shadow: 0 12px 24px rgba(46, 204, 113, 0.25); /* යටින් greenish/dark glow shadow එකක් එයි */
+  transform: translateY(-10px) scale(1.02); 
+  box-shadow: 0 12px 24px rgba(46, 204, 113, 0.25); 
 }
 
 .card-img img {
