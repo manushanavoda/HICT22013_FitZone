@@ -13,7 +13,7 @@
         /* Navbar Styling */
         .navbar-custom {
             background-color: #000000;
-            border-bottom: 3px solid #198754; /* Green border line below navbar */
+            border-bottom: 3px solid #198754; 
         }
         .navbar-custom .nav-link {
             color: #ffffff;
@@ -268,10 +268,10 @@
 
     <script>
     function handleSearch(event) {
-        // Form එක Submit වෙද්දී Page එක Refresh වෙන එක නවත්වනවා
+        
         event.preventDefault();
 
-        // User තෝරපු Values ලබා ගැනීම
+        
         const workoutType = document.getElementById('workoutType').value;
         const goal = document.getElementById('goal').value;
         const level = document.getElementById('level').value;
@@ -282,93 +282,93 @@
         
 
 
-        // 1. Home Workout සහ Weight Loss male තේරුවොත්
+       
         if (workoutType === 'home' && goal === 'loss' && level === 'beginner' && Gender === 'male' && Area === 'full') {
-            window.location.href = 'HLBMF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = 'HLBMF.html'; 
         }
         else if (workoutType === 'home' && goal === 'loss' && level === 'intermediate' && Gender === 'male' && Area === 'full') {
-            window.location.href = 'HLIMF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = 'HLIMF.html'; 
         }
         else if (workoutType === 'home' && goal === 'loss' && level === 'advanced' && Gender === 'male' && Area === 'full') {
-            window.location.href = 'HLAMF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = 'HLAMF.html'; 
         }
         // Home workout and muscle gain male
         else if (workoutType === 'home' && goal === 'gain' && level === 'beginner' && Gender === 'male' && Area === 'full') {
-            window.location.href = 'HGBMF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = 'HGBMF.html'; 
         }
         else if (workoutType === 'home' && goal === 'gain' && level === 'intermediate' && Gender === 'male' && Area === 'full') {
-            window.location.href = './HGIMF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = './HGIMF.html'; 
         }
         else if (workoutType === 'home' && goal === 'gain' && level === 'advanced' && Gender === 'male' && Area === 'full') {
-            window.location.href = 'HGAMF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = 'HGAMF.html'; 
         }
 
         // Home Workout and Weight loss female
         else if(workoutType === 'home' && goal === 'loss' && level === 'beginner' && Gender === 'female' && Area === 'full') {
-            window.location.href = 'HLBFF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = 'HLBFF.html'; 
         }
         else if (workoutType === 'home' && goal === 'loss' && level === 'intermediate' && Gender === 'female' && Area === 'full') {
-            window.location.href = 'HLIFF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = 'HLIFF.html'; 
         }
         else if (workoutType === 'home' && goal === 'loss' && level === 'advanced' && Gender === 'female' && Area === 'full') {
-            window.location.href = '/HLAFF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = '/HLAFF.html'; 
         }
 
         //Home workout and muscle gain female
         else if (workoutType === 'home' && goal === 'gain' && level === 'beginner' && Gender === 'female' && Area === 'full') {
-            window.location.href = 'HGBFF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = 'HGBFF.html'; 
         }
         else if (workoutType === 'home' && goal === 'gain' && level === 'intermediate' && Gender === 'female' && Area === 'full') {
-            window.location.href = 'HGIFF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = 'HGIFF.html'; 
         }
         else if (workoutType === 'home' && goal === 'gain' && level === 'advanced' && Gender === 'female' && Area === 'full') {
-            window.location.href = 'HGAFF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = 'HGAFF.html'; 
         }
 
 
         
-        // 2. Gym Workout සහ Muscle Gain male තේරුවොත්
+        // 2. Gym Workout & Muscle Gain for male 
         else if (workoutType === 'gym' && goal === 'gain' && level === 'beginner' && Gender === 'male' && Area === 'full') {
-            window.location.href = 'GGBMF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = 'GGBMF.html'; 
         }
         else if (workoutType === 'gym' && goal === 'gain' && level === 'intermediate' && Gender === 'male' && Area === 'full') {
-            window.location.href = 'GGIMF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = 'GGIMF.html'; 
         }
         else if (workoutType === 'gym' && goal === 'gain' && level === 'advanced' && Gender === 'male' && Area === 'full') {
-            window.location.href = 'GGAMF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = 'GGAMF.html'; 
         }
 
        // gym workout muscle gain female
         else if (workoutType === 'gym' && goal === 'gain' && level === 'beginner' && Gender === 'female' && Area === 'full') {
-            window.location.href = 'GGBMF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = 'GGBMF.html'; 
         }
         else if (workoutType === 'gym' && goal === 'gain' && level === 'intermediate' && Gender === 'female' && Area === 'full') {
-            window.location.href = 'GGIMF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = 'GGIMF.html'; 
         }
         else if (workoutType === 'gym' && goal === 'gain' && level === 'advanced' && Gender === 'female' && Area === 'full') {
-            window.location.href = 'GGAMF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = 'GGAMF.html'; 
         }
 
         //gym workout weight loss male
         else if(workoutType === 'gym' && goal === 'loss' && level === 'beginner' && Gender === 'male' && Area === 'full') {
-            window.location.href = 'GLBMF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = 'GLBMF.html'; 
         }
         else if (workoutType === 'gym' && goal === 'loss' && level === 'intermediate' && Gender === 'male' && Area === 'full') {
-            window.location.href = 'GLIMF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = 'GLIMF.html'; 
         }
         else if (workoutType === 'gym' && goal === 'loss' && level === 'advanced' && Gender === 'male' && Area === 'full') {
-            window.location.href = 'GLAMF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = 'GLAMF.html'; 
         }
 
         //gym workout weight loss female
         else if(workoutType === 'gym' && goal === 'loss' && level === 'beginner' && Gender === 'female' && Area === 'full') {
-            window.location.href = 'GLBFF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = 'GLBFF.html'; 
         }
         else if (workoutType === 'gym' && goal === 'loss' && level === 'intermediate' && Gender === 'female' && Area === 'full') {
-            window.location.href = 'GLIFF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = 'GLIFF.html'; 
         }
         else if (workoutType === 'gym' && goal === 'loss' && level === 'advanced' && Gender === 'female' && Area === 'full') {
-            window.location.href = 'GLAFF.html'; // ඒ අදාළ page එකේ නම
+            window.location.href = 'GLAFF.html'; 
         }
 
 
@@ -379,7 +379,7 @@
         
         
 
-    // Clear All Button එක සඳහා
+    
     function resetForm() {
         document.getElementById("filterForm").reset();
     }
