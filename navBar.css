@@ -46,7 +46,7 @@
 .nav-menu .nav-link,
 .nav-link,
 .nav-link:visited {
-  color: #ffffff !important; /* Bootstrap styling override කර සුදු පාටම තබයි */
+  color: #ffffff !important; 
   text-decoration: none;
   font-size: 1.15rem;
   font-weight: 500;
@@ -56,7 +56,7 @@
 
 .nav-menu .nav-link:hover,
 .nav-link:hover {
-  color: #c8e6c9 !important; /* Mouse එක උඩට ගෙනිච්චාම ලස්සන light green පාටක් වේ (කලින් තිබුණු dark green එක green background එකේ පේන්නේ නැති නිසා) */
+  color: #c8e6c9 !important; 
   transform: translateY(-2px);
 }
 
@@ -82,5 +82,5 @@
 }
 
 body {
-    padding-top: 80px !important; /* Navbar එකේ උස අනුව මේ pixels අගය වෙනස් කරගන්න (eg: 80px, 120px) */
+    padding-top: 80px !important; 
 }
